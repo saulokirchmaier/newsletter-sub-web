@@ -12,6 +12,11 @@ const config: Config = {
         image: "url('../img/background.png')",
         union: "url('../img/union.png')",
       },
+      colors: {
+        main: '#E30161',
+        'input-bg': '#FFFFFF33',
+        'placeholder-input': '#FFFFFF99',
+      },
     },
   },
   plugins: [],
