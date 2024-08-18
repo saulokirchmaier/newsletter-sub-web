@@ -16,9 +16,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt">
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
       <body className={inter.className}>
         <div className="bg-image bg-cover bg-center -z-20">
-          <div className="bg-union bg-contain bg-no-repeat h-full bg-right-bottom -z-10">
+          <div className="bg-union bg-cover bg-no-repeat bg-right-bottom -z-10">
             {children}
           </div>
         </div>
