@@ -13,6 +13,7 @@ import CustomButton from '@/components/CustomButton'
 import addSubscribe from '@/api/subscribe'
 import { useState } from 'react'
 import toast, { Toaster } from 'react-hot-toast'
+import { useRouter } from 'next/navigation'
 
 interface IFormInput {
   name: string
@@ -47,6 +48,7 @@ export default function Home() {
     formState: { errors },
   } = useForm<IFormInput>({ resolver: yupResolver(schema) })
   const [loading, setLoading] = useState<boolean>(false)
+  const router = useRouter()
 
   const apiErrorHandler = (messages: string[]) => {
     messages.forEach((message) => {
@@ -69,7 +71,8 @@ export default function Home() {
     if (error) return apiErrorHandler(messages)
 
     subscribed()
-    return setLoading(false)
+    setLoading(false)
+    return router.push('/thanks')
   }
 
   return (
