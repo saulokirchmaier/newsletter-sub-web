@@ -1,6 +1,5 @@
 'use client'
 
-import ReactDOM from 'react-dom'
 import Image from 'next/image'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import * as yup from 'yup'
@@ -11,6 +10,9 @@ import woman from '@/img/woman.png'
 import CustomInput from '@/components/CustomInput'
 import MaskInput from '@/components/MaskInput'
 import CustomButton from '@/components/CustomButton'
+import addSubscribe from '@/api/subscribe'
+import { useState } from 'react'
+import toast, { Toaster } from 'react-hot-toast'
 
 interface IFormInput {
   name: string
@@ -34,13 +36,41 @@ const schema = yup
   })
   .required()
 
+const notify = (message: string) => toast.error(message)
+const subscribed = () => toast.success('Inscrição realizada com sucesso!')
+
 export default function Home() {
+  const [apiError, setApiError] = useState({ error: false, messages: [] })
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<IFormInput>({ resolver: yupResolver(schema) })
-  const onSubmit: SubmitHandler<IFormInput> = (data) => console.log(data)
+  const [loading, setLoading] = useState<boolean>(false)
+
+  const apiErrorHandler = (messages: string[]) => {
+    messages.forEach((message) => {
+      notify(message)
+    })
+    return setLoading(false)
+  }
+
+  const onSubmit: SubmitHandler<IFormInput> = async (data) => {
+    setLoading(true)
+    const form = {
+      name: data.name,
+      phone: data.phone.replace(/\D/g, ''),
+      email: data.email,
+      company: data.company,
+    }
+
+    const { error, messages, ...response } = await addSubscribe(form)
+
+    if (error) return apiErrorHandler(messages)
+
+    subscribed()
+    return setLoading(false)
+  }
 
   return (
     <main className="h-screen w-full p-4 md:py-14 md:px-32">
@@ -59,6 +89,7 @@ export default function Home() {
             placeholder="Insira seu nome completo"
             register={register}
             error={errors.name?.message}
+            disabled={loading}
           />
           <CustomInput
             label="E-mail"
@@ -67,6 +98,7 @@ export default function Home() {
             type="email"
             register={register}
             error={errors.email?.message}
+            disabled={loading}
           />
           <MaskInput
             label="Telefone"
@@ -75,6 +107,7 @@ export default function Home() {
             mask="(99) 9 9999-9999"
             register={register}
             error={errors.phone?.message}
+            disabled={loading}
           />
           <CustomInput
             label="Empresa"
@@ -82,12 +115,15 @@ export default function Home() {
             placeholder="Insira a empresa"
             register={register}
             error={errors.company?.message}
+            disabled={loading}
           />
         </form>
         <div className="mt-8">
           <CustomButton
             text="Realizar inscrição"
             onClick={handleSubmit(onSubmit)}
+            loading={loading}
+            loadingText="Realizando inscrição"
           />
         </div>
       </div>
@@ -96,6 +132,7 @@ export default function Home() {
         alt="woman"
         className="hidden lg:block lg:w-4/12 absolute md:bottom-0 md:right-0 "
       />
+      <Toaster />
     </main>
   )
 }
