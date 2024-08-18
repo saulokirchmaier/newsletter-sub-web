@@ -22,7 +22,7 @@ const CustomInput: FunctionComponent<CustomInputProps> = ({
       name={name}
       {...register(name)}
       {...props}
-      className="px-4 py-2 bg-input-bg rounded-full placeholder:text-placeholder-input"
+      className="px-4 py-2 bg-input-bg rounded-full placeholder:text-placeholder-input disabled:brightness-0:"
     />
     <p className="font-light text-sm">{error}</p>
   </div>

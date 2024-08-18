@@ -1,7 +1,7 @@
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, InputHTMLAttributes } from 'react'
 import InputMask from 'react-input-mask'
 
-interface MaskInputProps {
+interface MaskInputProps extends InputHTMLAttributes<HTMLInputElement> {
   label: string
   mask: string
   name: string
