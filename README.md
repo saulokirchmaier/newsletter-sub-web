@@ -24,6 +24,10 @@ Para este projeto foram utilizadas as seguintes tecnologias:
 
 ## Utilização
 
+### Deploy
+
+- A aplicação pode ser testada [aqui](https://newsletter-sub-web.vercel.app). Obs: a API está hospedada em uma plataforma gratuita e a aplicação pode estar em sleep, assim demora em torno de 1 minuto para estar ativa novamente.
+
 ### Requisitos
 
 Antes de rodar o projeto tenha certeza de estar com as seguintes tecnologias instaladas no seu PC:
