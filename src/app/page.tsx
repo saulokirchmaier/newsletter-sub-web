@@ -41,7 +41,6 @@ const notify = (message: string) => toast.error(message)
 const subscribed = () => toast.success('Inscrição realizada com sucesso!')
 
 export default function Home() {
-  const [apiError, setApiError] = useState({ error: false, messages: [] })
   const {
     register,
     handleSubmit,
@@ -79,7 +78,10 @@ export default function Home() {
     <main className="h-screen w-full p-4 md:py-14 md:px-32">
       <Image src={logo} alt="logo" width={120} />
       <div className="flex flex-col gap-4 justify-center h-full md:max-w-[900px]">
-        <h1 className="text-4xl font-bold text-white mb-8">
+        <h1
+          className="text-4xl font-bold text-white mb-8"
+          data-testid="main-header"
+        >
           Inscreva-se em nossa newsletter.
         </h1>
         <form
@@ -123,6 +125,7 @@ export default function Home() {
         </form>
         <div className="mt-8">
           <CustomButton
+            type="submit"
             text="Realizar inscrição"
             onClick={handleSubmit(onSubmit)}
             loading={loading}
