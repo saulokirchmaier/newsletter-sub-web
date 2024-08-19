@@ -1,36 +1,80 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Newsletter Subscription WEB
 
-## Getting Started
+## Descrição
 
-First, run the development server:
+Projeto de página web de inscrição em uma newsletter realizado como teste prático para a [UNLKD](https://unlkd.co)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Sobre o projeto
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Descrição de desenvolvimento
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Web page de inscrição em uma newsletter.
+- Qualidade de código.
+- Validações de formulários.
+- Componente de feedback para sucesso ou erro do envio de formulário.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### Tecnologias
 
-## Learn More
+Para este projeto foram utilizadas as seguintes tecnologias:
 
-To learn more about Next.js, take a look at the following resources:
+- [NodeJS](https://nodejs.org/pt).
+- [React](https://react.dev/).
+- [NextJS](https://nextjs.org/).
+- [Jest](https://jestjs.io/pt-BR/).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Utilização
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Requisitos
 
-## Deploy on Vercel
+Antes de rodar o projeto tenha certeza de estar com as seguintes tecnologias instaladas no seu PC:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- [NodeJS](https://nodejs.org/pt) na versão 20 ou superior.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### Instalando
+
+#### Baixando
+
+- Faça um clone em seu computador, no terminal digite:
+  1. HTTPS:
+  ```bash
+    $ git clone https://github.com/saulokirchmaier/newsletter-sub-web.git
+  ```
+  2. SSH:
+  ```bash
+    $ git clone git@github.com:saulokirchmaier/newsletter-sub-web.git
+  ```
+
+### Rodando
+
+- Entre na pasta do projeto:
+  ```bash
+    cd newsletter-sub-web
+  ```
+- adicione as variáveis de ambiente em um arquivo `.env.development` na raiz do projeto seguindo o exemplo:
+
+  ```
+  NEXT_PUBLIC_BASE_URL=http://localhost:3001
+  ```
+
+- Antes de rodar a aplicação web, rode o back-end da aplicação qu se encontra [aqui](https://github.com/saulokirchmaier/newsletter-sub-backend).
+
+- Com o back-end funcionando, rode o comando:
+  ```bash
+    npm run dev
+  ```
+- Abra o seu navegador em `http://localhost:3001` ou click [aqui](http://localhost:3001) e teste a vontade.
+
+### Testes
+
+Para os testes foi utilizado o [Jest](https://jestjs.io/pt-BR/).
+
+- Rodando os testes:
+  ```bash
+    npm run test
+  ```
+
+## Agradecimento
+
+Obrigado por ter chegado até aqui.
+
+Um grande abraço.
